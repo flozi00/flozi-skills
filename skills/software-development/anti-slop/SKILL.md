@@ -1,6 +1,6 @@
 ---
 name: anti-slop
-description: Keep AI code clean: no duplication, dead code, or slop.
+description: "Keep AI code clean: no duplication, dead code, or slop."
 license: MIT
 compatibility: >-
   Any language; works best with a linter, typechecker, dead-code detector,
