@@ -122,6 +122,10 @@ Tier rule: strong models plan and judge; small/mid models code, review,
 research, and write. NEVER spawn a strong model as a coding/execution
 subagent — quality comes from the plan and the briefs, not the worker tier.
 
+Harness resolution (orca first, direct CLI fallback, headless flags and
+pitfalls) lives in the `multi-harness-agents` skill — resolve
+role -> model tier -> available harness at spawn time.
+
 ## Briefing Discipline (what makes small models work)
 
 Every brief is: self-contained (workers see none of your conversation),
