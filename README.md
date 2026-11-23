@@ -29,6 +29,28 @@ Kategorien = Ordner unter `skills/` (z. B. `software-development/`, `design/`). 
 
 Das `skills/`-Layout ist bewusst gewählt: Es ist der Standard-Discovery-Pfad des [`npx skills`](https://github.com/vercel-labs/skills)-CLIs (scannt `skills/` bis 3 Ebenen tief), sodass das Repo direkt per `npx skills add` installierbar ist.
 
+## Skills
+
+| Skill | Kategorie | Beschreibung | Pfad |
+|---|---|---|---|
+| multi-agent-pipeline | agent-orchestration | Agent pipeline: architect plans, cross-model review, build. | `skills/agent-orchestration/multi-agent-pipeline/SKILL.md` |
+| multi-harness-agents | agent-orchestration | Run agents on any harness: orca first, CLI fallback. | `skills/agent-orchestration/multi-harness-agents/SKILL.md` |
+| compliance-audit | compliance | DSGVO, ISO 27001, C5, BSI: controls, evidence, gaps. | `skills/compliance/compliance-audit/SKILL.md` |
+| low-cognitive-load-ui | design | Design calm UIs: simple by default, powerful on demand. | `skills/design/low-cognitive-load-ui/SKILL.md` |
+| layered-documentation | documentation | 3-audience docs + archify diagrams. Use when documenting. | `skills/documentation/layered-documentation/SKILL.md` |
+| anti-slop | software-development | Keep AI code clean: no duplication, dead code, or slop. | `skills/software-development/anti-slop/SKILL.md` |
+| bug-hunting-loop | software-development | Hunt bugs adversarially: chains, edge cases, E2E flows. | `skills/software-development/bug-hunting-loop/SKILL.md` |
+| commit-discipline | software-development | Every commit deployable; WIP on branches, never main. | `skills/software-development/commit-discipline/SKILL.md` |
+| dependency-upgrades | software-development | Newest deps ≥72h old; security fixes immediately. | `skills/software-development/dependency-upgrades/SKILL.md` |
+| performance-optimization | software-development | Measure first: latency, memory, DB/Redis round trips. | `skills/software-development/performance-optimization/SKILL.md` |
+| security-review-pentest | software-development | Security review + pentest: boundaries, authz, injection. | `skills/software-development/security-review-pentest/SKILL.md` |
+| data-privacy-engineering | compliance | PII inventory, retention, export/erasure, anonymization. | `skills/compliance/data-privacy-engineering/SKILL.md` |
+| observability | operations | Logs, metrics, traces, SLOs: see production clearly. | `skills/operations/observability/SKILL.md` |
+| api-design | software-development | API contracts, versioning, errors, paging, idempotency. | `skills/software-development/api-design/SKILL.md` |
+| database-migrations | software-development | Zero-downtime schema changes: expand, migrate, contract. | `skills/software-development/database-migrations/SKILL.md` |
+| llm-security | software-development | LLM apps: prompt injection, tool safety, output trust. | `skills/software-development/llm-security/SKILL.md` |
+| resilience | software-development | Timeouts, retries, breakers, backpressure, degradation. | `skills/software-development/resilience/SKILL.md` |
+
 ## Skills installieren / synchronisieren
 
 ### Variante A: `npx skills` (empfohlen, agent-übergreifend)

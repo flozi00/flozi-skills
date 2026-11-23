@@ -2,6 +2,13 @@
 name: my-skill-name                # MUSS exakt dem Verzeichnisnamen entsprechen; lowercase + Bindestriche, ≤ 64 Zeichen
 description: >-                    # WAS der Skill macht + WANN er zu laden ist. Knapp halten (1-2 Sätze).
   Macht X. Use when <Trigger-Situation>.
+# YAML-Quoting: Ein einzeiliger (inline) `description:`-Wert, der einen Doppelpunkt
+# gefolgt von einem Leerzeichen enthält (z. B. "Agent pipeline: architect plans"),
+# MUSS in doppelte Anführungszeichen gesetzt werden — sonst ist das YAML invalid
+# und der Skill wird stillschweigend nicht geladen (genau dieser Bug hat 4 Skills
+# unsichtbar gemacht). Beispiel: description: "Macht X: Details. Use when Y."
+# Alternative: den `>-` Block-Scalar wie oben nutzen — dort sind Doppelpunkte
+# unproblematisch, weil der Wert mehrzeilig ist.
 license: MIT
 compatibility: >-                  # optional: Worauf der Skill angewiesen ist (Tools, Pakete, Netzwerk, OS)
   Benötigt <X>. Läuft auf linux/macos/windows.
