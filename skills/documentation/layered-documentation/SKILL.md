@@ -1,6 +1,6 @@
 ---
 name: layered-documentation
-description: 3-audience docs + archify diagrams. Use when documenting.
+description: "3-audience docs + archify diagrams. Use when documenting."
 license: MIT
 compatibility: >-
   Any repo; archify skill installed for diagram generation

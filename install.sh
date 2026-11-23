@@ -27,9 +27,9 @@ for arg in "$@"; do
   esac
 done
 
-# Discover skills: every dir two levels below a category containing a SKILL.md.
+# Discover skills: every dir two levels below skills/ containing a SKILL.md.
 SKILLS=()
-while IFS= read -r d; do SKILLS+=("$d"); done < <(find "$SRC" -mindepth 3 -maxdepth 3 -name SKILL.md -exec dirname {} \; | sort)
+while IFS= read -r d; do SKILLS+=("$d"); done < <(find "$SRC/skills" -mindepth 3 -maxdepth 3 -name SKILL.md -exec dirname {} \; | sort)
 
 if [ ${#SKILLS[@]} -eq 0 ]; then echo "No skills found in repo."; exit 0; fi
 
@@ -37,7 +37,7 @@ if [ ${#CATEGORIES[@]} -gt 0 ]; then
   FILTERED=()
   for s in "${SKILLS[@]}"; do
     for c in "${CATEGORIES[@]}"; do
-      case "$s" in "$SRC/$c/"*) FILTERED+=("$s"); break ;; esac
+      case "$s" in "$SRC/skills/$c/"*) FILTERED+=("$s"); break ;; esac
     done
   done
   SKILLS=("${FILTERED[@]}")

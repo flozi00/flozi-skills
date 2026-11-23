@@ -1,6 +1,6 @@
 ---
 name: low-cognitive-load-ui
-description: Design calm UIs: simple by default, powerful on demand.
+description: "Design calm UIs: simple by default, powerful on demand."
 license: MIT
 compatibility: Any UI stack (web, desktop, mobile); principles are platform-neutral.
 metadata:

@@ -1,6 +1,6 @@
 ---
 name: multi-agent-pipeline
-description: Agent pipeline: architect plans, cross-model review, build.
+description: "Agent pipeline: architect plans, cross-model review, build."
 license: MIT
 compatibility: >-
   Any multi-agent framework with per-agent model and harness selection

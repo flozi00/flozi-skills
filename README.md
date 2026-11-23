@@ -18,16 +18,39 @@ Projektbezogen funktionieren die Skills zusätzlich, wenn man sie statt nach `~`
 ## Struktur
 
 ```
-<category>/<skill-name>/
+skills/<category>/<skill-name>/
 ├── SKILL.md          # Pflicht — Frontmatter + Anleitung
 ├── references/       # optional — vertiefende Doku
 ├── scripts/          # optional — ausführbare Helper
 └── assets/           # optional — Vorlagen, Ressourcen
 ```
 
-Kategorien = Top-Level-Ordner (z. B. `software-development/`, `productivity/`). Sie dienen nur der Ordnung — flache Agents (Claude Code, Codex, Copilot) bekommen die Skills beim Install ohne Kategorie-Ebene. Der `name` im Frontmatter muss immer exakt dem Skill-Verzeichnisnamen entsprechen.
+Kategorien = Ordner unter `skills/` (z. B. `software-development/`, `design/`). Sie dienen nur der Ordnung — flache Agents (Claude Code, Codex, Copilot) bekommen die Skills beim Install ohne Kategorie-Ebene. Der `name` im Frontmatter muss immer exakt dem Skill-Verzeichnisnamen entsprechen.
+
+Das `skills/`-Layout ist bewusst gewählt: Es ist der Standard-Discovery-Pfad des [`npx skills`](https://github.com/vercel-labs/skills)-CLIs (scannt `skills/` bis 3 Ebenen tief), sodass das Repo direkt per `npx skills add` installierbar ist.
 
 ## Skills installieren / synchronisieren
+
+### Variante A: `npx skills` (empfohlen, agent-übergreifend)
+
+```bash
+# Alle Skills aus dem Repo installieren (interaktiv: Skills + Agents wählen)
+npx skills add flozi00/flozi-skills
+
+# Nur bestimmte Skills, global, für Hermes + Claude Code
+npx skills add flozi00/flozi-skills --skill anti-slop --skill low-cognitive-load-ui -g -a hermes-agent -a claude-code
+
+# Verfügbare Skills im Repo auflisten
+npx skills add flozi00/flozi-skills --list
+
+# Updates prüfen und einspielen
+npx skills check
+npx skills update
+```
+
+Unterstützte Agents u. a.: `hermes-agent` (`~/.hermes/skills/`), `claude-code`, `codex`, `github-copilot`, `opencode`, `cursor`, `droid`, `gemini-cli` — volle Liste: [docs/agents.md](https://github.com/vercel-labs/skills/blob/main/docs/agents.md). Private Repos funktionieren mit der bereits konfigurierten Git-Authentifizierung.
+
+### Variante B: `install.sh` (lokal, ohne Node)
 
 ```bash
 ./install.sh                      # alle Skills → alle erkannten Ziele

@@ -1,6 +1,6 @@
 ---
 name: multi-harness-agents
-description: Run agents on any harness: orca first, CLI fallback.
+description: "Run agents on any harness: orca first, CLI fallback."
 license: MIT
 compatibility: >-
   macOS/Linux/Windows shells with at least one agent CLI installed
