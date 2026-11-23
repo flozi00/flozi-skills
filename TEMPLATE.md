@@ -1,42 +1,42 @@
 ---
-name: my-skill-name                # lowercase, Bindestriche, ≤ 64 Zeichen
-description: Was der Skill kann, in einem Satz unter 60 Zeichen.
-version: 0.1.0
-author: Florian Zimmermeister (flozi00)
+name: my-skill-name                # MUSS exakt dem Verzeichnisnamen entsprechen; lowercase + Bindestriche, ≤ 64 Zeichen
+description: >-                    # WAS der Skill macht + WANN er zu laden ist. Knapp halten (1-2 Sätze).
+  Macht X. Use when <Trigger-Situation>.
 license: MIT
-platforms: [linux, macos, windows] # nur die OS, auf denen er wirklich läuft
-metadata:
-  hermes:
-    tags: [kurze, tags, hier]
-    related_skills: []             # nur Skills, die es wirklich gibt
+compatibility: >-                  # optional: Worauf der Skill angewiesen ist (Tools, Pakete, Netzwerk, OS)
+  Benötigt <X>. Läuft auf linux/macos/windows.
+metadata:                          # optional: string→string Map (Standard-konform)
+  author: Florian Zimmermeister (flozi00)
+  version: "0.1.0"
 ---
 
 # <Skill-Titel>
 
-2-3 Sätze: was der Skill macht, was nicht, und von was er abhängt.
+2-3 Sätze: was der Skill macht, was er explizit NICHT tut, und wovon er abhängt.
 
 ## When to Use
 
-- Konkreter Trigger 1 (wann soll der Agent diesen Skill laden?)
+- Konkreter Trigger 1 (die Situation, in der dieser Skill geladen werden soll)
 - Konkreter Trigger 2
-- **Don't use for:** Gegenfall (wann NICHT)
+- **When NOT to use:** Gegenfall (wann der Skill nicht passt)
 
 ## Prerequisites
 
 - Env-Vars, installierte Tools, Zugänge — exakt benannt, keine "siehe Doku"-Verweise.
 
-## Procedure
+## Workflow
 
-1. Schritt — mit checkbarem Abschlusskriterium ("Exit: X liegt vor").
-2. Schritt — Hermes-Tools namentlich nennen (`terminal`, `read_file`, `web_search`, …),
-   keine Shell-Wrapper, die Hermes schon abbietet (`grep` → `search_files`, `cat` → `read_file`).
-3. Keine maschinenlokalen Pfade (`/Users/florian/...`) — repo-/umgebungsrelative Pfade nutzen.
+1. Schritt — mit checkbarem Abschlusskriterium ("Erledigt, wenn X vorliegt").
+2. Schritt — werkzeug-neutral formulieren: "im Terminal ausführen", "im Web recherchieren",
+   "Datei lesen/schreiben" — KEINE agent-spezifischen Toolnamen (die mappt jeder Agent selbst).
+3. Keine maschinenlokalen Pfade (`/Users/florian/...`) — relative Pfade oder Platzhalter nutzen.
 
 ## Pitfalls
 
 - Bekannte Stolperfallen: was aussieht wie ein Bug, aber keiner ist;
-  was silent failt; was man nicht retryen darf.
+  was silent failt; was man nicht blind retryen darf.
 
 ## Verification
 
-- Wie beweist man, dass der Skill funktioniert hat (echter Tool-Output, Read-back, Exit-Codes).
+- [ ] Checkliste, wie bewiesen wird, dass der Skill funktioniert hat
+- [ ] Echter Output/Read-back statt Selbstauskunft ("erledigt" zählt nicht als Beweis)

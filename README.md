@@ -1,49 +1,59 @@
 # flozi-skills
 
-Persönliche Sammlung generisch wiederverwendbarer Skills für [Hermes Agent](https://github.com/NousResearch/hermes-agent).
+Persönliche Sammlung generisch wiederverwendbarer **Agent Skills** — nach dem offenen [Agent Skills Standard](https://agentskills.io) (SKILL.md + YAML-Frontmatter), dadurch nutzbar in mehreren Agent-Frameworks, nicht nur einem.
 
-Dieses Repo ist die **Single Source of Truth**: Skills werden hier entwickelt und gepflegt, dann in die lokale Hermes-Installation synchronisiert.
+Dieses Repo ist die **Single Source of Truth**: Skills werden hier entwickelt und gepflegt, dann in die jeweiligen Agent-Verzeichnisse synchronisiert.
+
+## Kompatibilität
+
+| Agent | Persönlicher Skills-Pfad | Struktur beim Install |
+|---|---|---|
+| Hermes Agent | `~/.hermes/skills/` | mit Kategorie-Ordnern |
+| Claude Code | `~/.claude/skills/` | flach |
+| OpenAI Codex | `~/.agents/skills/` | flach |
+| GitHub Copilot | `~/.copilot/skills/` | flach |
+
+Projektbezogen funktionieren die Skills zusätzlich, wenn man sie statt nach `~` in `.claude/skills/` bzw. `.agents/skills/` bzw. `.github/skills/` des jeweiligen Repos legt.
 
 ## Struktur
 
 ```
 <category>/<skill-name>/
 ├── SKILL.md          # Pflicht — Frontmatter + Anleitung
-├── references/       # optional — vertiefende Doku pro Thema
-├── templates/        # optional — Vorlagen/Configs
-└── scripts/          # optional — Helper-Scripts
+├── references/       # optional — vertiefende Doku
+├── scripts/          # optional — ausführbare Helper
+└── assets/           # optional — Vorlagen, Ressourcen
 ```
 
-Kategorien = die Top-Level-Ordner (z. B. `software-development/`, `productivity/`, `research/`). Eine Kategorie wird beim ersten Skill in ihr angelegt.
+Kategorien = Top-Level-Ordner (z. B. `software-development/`, `productivity/`). Sie dienen nur der Ordnung — flache Agents (Claude Code, Codex, Copilot) bekommen die Skills beim Install ohne Kategorie-Ebene. Der `name` im Frontmatter muss immer exakt dem Skill-Verzeichnisnamen entsprechen.
 
 ## Skills installieren / synchronisieren
 
 ```bash
-# Alle Skills aus diesem Repo nach ~/.hermes/skills/ kopieren
-./install.sh
-
-# Nur eine Kategorie
-./install.sh software-development
-
-# Lokale Kopien löschen, die nicht mehr im Repo liegen (Repo gewinnt)
-./install.sh --prune
+./install.sh                      # alle Skills → alle erkannten Ziele
+./install.sh --target hermes      # nur Hermes (~/.hermes/skills/)
+./install.sh --target claude      # nur Claude Code (~/.claude/skills/)
+./install.sh --target codex       # nur OpenAI Codex (~/.agents/skills/)
+./install.sh --target copilot     # nur GitHub Copilot (~/.copilot/skills/)
+./install.sh --target all         # explizit alle Ziele
+./install.sh software-development # nur eine Kategorie
+./install.sh --prune              # lokale Kopien löschen, die es im Repo nicht mehr gibt
 ```
 
-Neue Skills sind erst in **neuen Sessions** sichtbar — der Skill-Loader wird beim Session-Start initialisiert.
+`--prune` räumt in flachen Zielen (Claude Code, Codex, Copilot) den kompletten Ordner auf; bei Hermes nur innerhalb der Kategorien, die es im Repo gibt — deine übrigen lokalen Hermes-Skills bleiben unangetastet.
+
+Neue Skills sind je nach Agent erst in **neuen Sessions** sichtbar — die meisten Loader initialisieren beim Session-Start.
 
 ## Neuen Skill anlegen
 
-1. `TEMPLATE.md` kopieren: `cp TEMPLATE.md <category>/<skill-name>/SKILL.md`
-2. Ausfüllen — die wichtigsten Regeln stehen als Kommentare drin.
-3. Committen. Fertig.
+1. `TEMPLATE.md` kopieren: `mkdir -p <category>/<skill-name> && cp TEMPLATE.md <category>/<skill-name>/SKILL.md`
+2. Ausfüllen — die Regeln stehen als Kommentare drin.
+3. Optional validieren: `skills-ref validate <category>/<skill-name>` (Referenz-Validator des Standards).
+4. Committen. Fertig.
 
-Kurzregeln fürs Frontmatter:
+## Portabilitäts-Regeln
 
-| Feld | Regel |
-|---|---|
-| `name` | lowercase, Bindestriche, ≤ 64 Zeichen |
-| `description` | **≤ 60 Zeichen**, ein Satz, endet mit `.` — der Skill-Index schneidet bei ~57 chars ab, der Trigger muss in das Fenster passen |
-| `version` | Semver, neue Skills starten bei `0.1.0` |
-| `platforms` | Nur die OS, auf denen der Skill wirklich läuft |
-
-Body-Ziel: ~100 Zeilen für einfache, ~200 für komplexe Skills. Alles Bulky gehört in `references/`, nicht in die SKILL.md.
+- **Nur Standard-Frontmatter-Felder**: `name`, `description`, `license`, `compatibility`, `metadata`, `allowed-tools`. Agent-spezifische Steuerung (Model, Tool-Restriktionen) gehört nicht ins Frontmatter.
+- **Werkzeug-neutral schreiben**: Der Body beschreibt *Fähigkeiten* („im Terminal ausführen", „im Web recherchieren", „Dateien lesen/schreiben"), keine agent-spezifischen Toolnamen. Jeder Agent mappt das auf seine eigenen Tools.
+- **`description` = WAS + WANN**: „Macht X. Use when Y." — Agents entdecken Skills ausschließlich über die Description. Knapp halten (1–2 Sätze), auch wenn der Standard 1024 Zeichen erlaubt: manche Agents (z. B. Hermes) zeigen im Skill-Index nur die ersten ~60 Zeichen.
+- **SKILL.md unter 500 Zeilen**; alles Detailreiche in `references/`, alles Ausführbare in `scripts/` (Progressive Disclosure).
