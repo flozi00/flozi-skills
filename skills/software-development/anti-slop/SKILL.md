@@ -171,3 +171,8 @@ duplicate tests manufactured to satisfy a count.
 - [ ] Quality gates green (lint, typecheck, dead-code, tests)
 - [ ] Acceptance stated as a guarantee, not "warning gone"
 - [ ] Cleanup passes separate from feature changes
+
+## Related Skills
+
+- `bug-hunting-loop` — when a cleanup pass needs adversarial tests to lock behavior first.
+- `commit-discipline` — when cleanup lands as its own bounded, green commits.

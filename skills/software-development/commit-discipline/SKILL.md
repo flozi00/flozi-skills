@@ -16,6 +16,15 @@ tracking progress — but a checkpoint that cannot pass the gate stays off
 the deployable branch. This is the rule that makes "accidentally deployed
 an update" a non-event.
 
+## When to Use
+
+- Before every commit and push on a shared or deployable branch.
+- Setting up branch, merge, and gate policy for a repo or CI pipeline.
+- After an incident caused by a broken or half-finished deploy.
+- **When NOT to use:** throwaway local experiments that never leave the
+  machine; choosing which dependency version to commit (use
+  `dependency-upgrades`).
+
 ## The Rule
 
 1. **Every commit on the deployable branch passes the full gate** — build,
@@ -83,3 +92,8 @@ an update" a non-event.
 - [ ] Migrations are expand/contract; config changes backward-compatible
 - [ ] Incomplete features behind flags (default off)
 - [ ] Commit messages state what and why
+
+## Related Skills
+
+- `bug-hunting-loop` — when "green" needs adversarial tests, not just the existing suite.
+- `dependency-upgrades` — when a commit bumps dependencies and must follow the 72 h policy.

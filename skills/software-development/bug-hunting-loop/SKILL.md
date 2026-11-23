@@ -161,3 +161,9 @@ Walk whole user journeys, not just units:
 - [ ] Forbidden side effects asserted absent
 - [ ] Every fix has a guard; siblings checked for the same class
 - [ ] Residual candidates recorded as unproven
+
+## Related Skills
+
+- `commit-discipline` — when fixes must land as atomic, revert-friendly commits.
+- `performance-optimization` — when a suspected bug is actually a latency or resource regression.
+- `security-review-pentest` — when a candidate crosses a trust boundary and needs exploitation proof.

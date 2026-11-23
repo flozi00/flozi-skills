@@ -16,6 +16,15 @@ and yanked within days. The policy: **always run the newest dependency
 version that is at least 72 hours old** — and ignore the age rule only for
 security fixes.
 
+## When to Use
+
+- Routine dependency refresh, or a scheduled upgrade pass.
+- A security advisory or CVE affecting a version in use.
+- Adding a new dependency — pick an eligible version from the start.
+- **When NOT to use:** internal packages with no external publish and no
+  supply-chain window; runtime or language major migrations that need
+  their own plan.
+
 ## The Rule
 
 1. **Default:** newest available version whose publish date is **≥ 72
@@ -89,3 +98,8 @@ security fixes.
 - [ ] Full test suite green after the upgrade
 - [ ] Security advisories checked; hotpatches applied immediately
 - [ ] Upgrade recorded with date and reason
+
+## Related Skills
+
+- `security-review-pentest` — when an advisory needs impact assessment, not just a version bump.
+- `commit-discipline` — when the upgrade must land as a green, revert-friendly commit.

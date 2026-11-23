@@ -119,3 +119,7 @@ orca orchestration check --wait \
 - [ ] Model-harness pairing matches the pipeline rules; reviewer harness differs from coder where possible
 - [ ] Sandbox/permission flags set deliberately — write access only where the role needs it
 - [ ] Results collected via handles (files, diffs, exit codes), not stdout prose
+
+## Related Skills
+
+- `multi-agent-pipeline` — when the harness choice serves a role in the tiered pipeline.

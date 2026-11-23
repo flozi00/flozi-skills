@@ -20,6 +20,17 @@ number of instantiated agents scales. A trivial one-tool task collapses to
 the orchestrator acting alone; anything spanning multiple files, unknowns,
 or quality requirements gets the full pipeline.
 
+## When to Use
+
+- Any task spanning multiple files, open unknowns, or explicit quality
+  requirements.
+- When a result needs independent review — planning, coding, and testing
+  each judged by a different model.
+- When work parallelizes across workers and one owner must converge it.
+- **When NOT to use:** a trivial one-tool task (the orchestrator acts
+  alone); a single interactive session with no worker spawning — harness
+  choice alone is the `multi-harness-agents` skill.
+
 ## The Hierarchy (fixed roles)
 
 ```
@@ -172,3 +183,9 @@ it good"), and single-axis (one seam per worker).
 - [ ] Open questions were debated autonomously, not punted to the human
 - [ ] Plan updates during build flowed through planners, not ad-hoc edits
 - [ ] Every claimed result verified via a handle, not a self-report
+
+## Related Skills
+
+- `multi-harness-agents` — when resolving which harness runs a role at spawn time.
+- `commit-discipline` — when the build loop's output must land as deployable commits.
+- `bug-hunting-loop` — when the test loop needs adversarial coverage beyond the acceptance criteria.

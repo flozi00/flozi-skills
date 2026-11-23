@@ -98,3 +98,7 @@ Discipline:
 - [ ] L2 setup was executed end-to-end, not just written
 - [ ] Every L3 path resolves against the current tree
 - [ ] Archify diagrams regenerated after the latest structural change
+
+## Related Skills
+
+- `anti-slop` — when the code the docs describe needs a cleanup pass before it is worth documenting.

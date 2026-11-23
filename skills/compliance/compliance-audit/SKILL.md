@@ -27,6 +27,9 @@ gives you the recurring loop that keeps the register honest.
 - Customer security questionnaires and tender requirements.
 - When asked "are we compliant?" — answer from the register, never from
   opinion.
+- **When NOT to use:** a technical security review or pentest (use
+  `security-review-pentest`); a single dependency bump (use
+  `dependency-upgrades`).
 
 ## The Register (core artifact)
 
@@ -181,3 +184,8 @@ and internal audit (ISO 27001 clauses 9.2/9.3).
 - [ ] Gap plan reviewed by management
 - [ ] Automation covers what is deterministic
 - [ ] Report shows counts by status and trend
+
+## Related Skills
+
+- `security-review-pentest` — when a control's evidence depends on a real security review.
+- `dependency-upgrades` — when patch status and CVE handling are the control under audit.

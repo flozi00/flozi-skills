@@ -145,3 +145,8 @@ assert the count in tests.
 - [ ] Cache contract explicit: key, scope, TTL, invalidation
 - [ ] Regression guard added where stable
 - [ ] No invented speedups; unmeasured claims labeled
+
+## Related Skills
+
+- `bug-hunting-loop` — when the symptom turns out to be a correctness bug, not a cost problem.
+- `commit-discipline` — when each measured win lands as its own green commit.
