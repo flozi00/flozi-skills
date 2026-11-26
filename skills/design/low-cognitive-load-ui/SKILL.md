@@ -48,6 +48,21 @@ NN/g progressive-disclosure research.
 | A rare or expert option on an existing object | One disclosure on that object |
 | A second surface for the same job | Nothing — fix the existing home |
 
+## Opening an Item from a List
+
+- After opening an item, show its name and the relevant content in the
+  current viewport. If it takes time to load, show a named, accessible loading
+  state where the detail will appear. Treat a highlighted row with its details
+  below unrelated panels as a failed transition.
+- Use a focused detail view for editing one item. A split view works for
+  frequent switching or comparison when both panes fit. On narrow screens,
+  show the detail with a clear return path. Keep unrelated catalogs and
+  administrative settings behind their own labeled entrances.
+- For a view change, move keyboard focus to the detail heading or the linked
+  target. On return, restore the list's search, filters, scroll position and
+  focus to the originating item when available. Preserve unsaved edits or
+  ask before discarding them.
+
 ## The Core Principle: Simple by Default, Powerful on Demand
 
 - The default view shows only the few most important options (NN/g
@@ -65,6 +80,22 @@ NN/g progressive-disclosure research.
 - Avoid explicit simple/advanced mode toggles unless the gap is huge. If
   used: prominent switch + in-context on-ramp ("You've been using X —
   unlock advanced options?").
+
+## Show Actions People Can Use
+
+- Build everyday menus and toolbars from effective permissions, workspace
+  configuration and the current resource state. If an optional feature is
+  unavailable and the person cannot enable it from this flow, omit its action
+  and explanatory row. Remove empty groups and their triggers. If one action
+  remains, consider a directly labeled control when it fits.
+- Keep an expected action visible when its prerequisite can be resolved here or
+  it is temporarily busy. Explain what the person can do next or show progress.
+  For example, keep a form's submit action visible while required fields are
+  incomplete.
+- If a direct link or an action already in progress is refused, explain the
+  reason and any available recovery in context. Keep approvals, risks and stop
+  controls visible when they apply. Enforce authorization and availability on
+  the server even when the UI omits the control.
 
 ## Should This Setting Exist at All?
 
@@ -179,6 +210,13 @@ same change:
 
 - [ ] Primary task reachable in ≤ 3 obvious steps from landing
 - [ ] One primary action per view; ≤ 7 ± 2 controls per step
+- [ ] For list/detail changes, compare the same task before and after with
+  pointer and keyboard at narrow and wide widths. Open an existing item from a
+  scrolled list. Its identity and relevant content or loading state are visible
+  without further scrolling. Returning restores context and protects edits.
+- [ ] Check action availability across roles, workspace settings and resource
+  states. Try menus with zero or one available action, a temporarily blocked
+  action in an active workflow, and a direct attempt that is refused.
 - [ ] Same function looks and behaves identically everywhere
 - [ ] Multi-step flows show progress and resume after interruption
 - [ ] No auto-play, blinking, or layout shift; reduced-motion respected
