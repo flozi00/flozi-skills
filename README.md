@@ -50,6 +50,7 @@ Das `skills/`-Layout ist bewusst gewählt: Es ist der Standard-Discovery-Pfad de
 | database-migrations | software-development | Zero-downtime schema changes: expand, migrate, contract. | `skills/software-development/database-migrations/SKILL.md` |
 | llm-security | software-development | LLM apps: prompt injection, tool safety, output trust. | `skills/software-development/llm-security/SKILL.md` |
 | resilience | software-development | Timeouts, retries, breakers, backpressure, degradation. | `skills/software-development/resilience/SKILL.md` |
+| slop-cleanup | software-development | Clean a sloppy codebase: dead code, duplicates, noise. | `skills/software-development/slop-cleanup/SKILL.md` |
 
 ## Skills installieren / synchronisieren
 
